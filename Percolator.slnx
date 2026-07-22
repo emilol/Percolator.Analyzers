@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Percolator.Analyzers.Tests\Percolator.Analyzers.Tests.csproj" Type="C#" />
+  <Project Path="Percolator.Domain/Percolator.Domain.csproj" />
+  <Project Path="Percolator.Persistence.Tests/Percolator.Persistence.Tests.csproj" />
+  <Project Path="Percolator.Persistence/Percolator.Persistence.csproj" />
+  <Project Path="Percolator.Analyzers/Percolator.Analyzers.csproj" Type="C#" />
+</Solution>
