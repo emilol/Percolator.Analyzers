@@ -4,4 +4,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <!--
+    Run Percolator.Analyzers against every project in the solution except itself
+    and its own test project, which would otherwise be a self-reference cycle.
+  -->
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Percolator.Analyzers' AND '$(MSBuildProjectName)' != 'Percolator.Analyzers.Tests'">
+    <ProjectReference Include="$(MSBuildThisFileDirectory)Percolator.Analyzers\Percolator.Analyzers.csproj"
+                       OutputItemType="Analyzer"
+                       ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
 </Project>

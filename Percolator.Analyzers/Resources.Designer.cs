@@ -58,5 +58,32 @@ namespace Percolator.Analyzers {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Methods that return Task should be async..
+        /// </summary>
+        internal static string PA00001Description {
+            get {
+                return ResourceManager.GetString("PA00001Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} returns a Task and should be async.
+        /// </summary>
+        internal static string PA00001MessageFormat {
+            get {
+                return ResourceManager.GetString("PA00001MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The method should be async.
+        /// </summary>
+        internal static string PA00001Title {
+            get {
+                return ResourceManager.GetString("PA00001Title", resourceCulture);
+            }
+        }
     }
 }
