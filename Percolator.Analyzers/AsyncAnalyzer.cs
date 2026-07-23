@@ -26,7 +26,7 @@ public class AsyncAnalyzer : DiagnosticAnalyzer
             typeof(Resources));
 
     // The category of the diagnostic (Design, Naming etc.).
-    private const string Category = "Async";
+    private const string Category = "Usage";
 
     private static readonly DiagnosticDescriptor Rule = new(DiagnosticId, Title, MessageFormat, Category,
         DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description,
