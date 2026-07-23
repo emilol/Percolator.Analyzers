@@ -8,6 +8,14 @@ Roslyn analyzers wired directly into a solution via project reference instead of
 - `Percolator.Analyzers.Tests` - tests for them, using `Microsoft.CodeAnalysis.Testing`.
 - `Percolator.Domain` / `Percolator.Persistence` (`.Tests`) - a sample app for the analyzers to run against.
 
+## Why it's here
+
+Not all analyzers are general in nature.
+
+I've found colocating analyzers particularly useful on monorepos mid-migration. When an abstraction is only partially replaced, whoever's writing code (human or agent) reaches for whichever version is closest to hand, and the codebase drifts in two directions at once.
+
+Adding a rule that flags the old pattern in the same commit that introduces a new alternative keeps everyone pulling in the same direction for the length of the migration. It shortens the feedback loop for platform developers and can stay up to date as the abstractions evolve.
+
 ## Wiring
 
 `Directory.Build.props` adds this to every project except the analyzer project and its own tests:
@@ -30,7 +38,7 @@ Want a rule from here published as an actual package instead? Open an issue.
 
 ## Rules
 
-One page per rule on the [wiki](https://github.com/emilol/percolate/wiki), linked from each diagnostic via `helpLinkUri`.
+One page per rule on the [wiki](https://github.com/emilol/Percolator.Analyzers/wiki), linked from each diagnostic via `helpLinkUri`.
 
 ## Building and testing
 

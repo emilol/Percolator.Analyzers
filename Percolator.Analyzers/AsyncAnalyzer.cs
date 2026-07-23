@@ -30,7 +30,7 @@ public class AsyncAnalyzer : DiagnosticAnalyzer
 
     private static readonly DiagnosticDescriptor Rule = new(DiagnosticId, Title, MessageFormat, Category,
         DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description,
-        helpLinkUri: "https://github.com/emilol/percolate/wiki/PA00001");
+        helpLinkUri: "https://github.com/emilol/Percolator.Analyzers/wiki/PA00001");
 
     // Keep in mind: you have to list your rules here.
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
