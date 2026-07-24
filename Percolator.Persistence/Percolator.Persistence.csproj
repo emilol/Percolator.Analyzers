@@ -15,7 +15,7 @@
          SQLitePCLRaw.bundle_e_sqlite3 >= 2.1.12 (it currently pulls the vulnerable
          2.1.11 per CVE-2025-6965 / GHSA-2m69-gcr7-jv3q) - check by restoring without
          this line and seeing whether NU1903 reappears. -->
-    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.12" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.4" />
   </ItemGroup>
 
   <PropertyGroup>
