@@ -10,7 +10,7 @@ public class AsyncAnalyzerTests
     public async Task TestAsyncAnalyzer()
     {
         // Lang=C#
-        var text =
+        const string text =
 """
 using System.Threading.Tasks;
 

@@ -11,7 +11,7 @@ namespace Percolator.Analyzers;
 public class AsyncAnalyzer : DiagnosticAnalyzer
 {
     // Preferred format of DiagnosticId is Your Prefix + Number, e.g. CA1234.
-    private const string DiagnosticId = "PA00001";
+    public const string DiagnosticId = "PA00001";
 
     private static readonly LocalizableString Title = new LocalizableResourceString(nameof(Resources.PA00001Title),
         Resources.ResourceManager, typeof(Resources));

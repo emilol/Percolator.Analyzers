@@ -8,11 +8,11 @@ public class AggregateRepository<TAggregate> : IAggregateRepository<TAggregate> 
 {
     public Task<TAggregate> LoadAsync(TAggregate aggregate)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(aggregate);
     }
 
     public Task SaveAsync(TAggregate aggregate)
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 }
