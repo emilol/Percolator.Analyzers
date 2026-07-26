@@ -4,6 +4,7 @@
   </Folder>
   <Project Path="Percolator.Analyzers.Tests\Percolator.Analyzers.Tests.csproj" />
   <Project Path="Percolator.Analyzers/Percolator.Analyzers.csproj" />
+  <Project Path="Percolator.Analyzers.CodeFixes\Percolator.Analyzers.CodeFixes.csproj" />
   <Project Path="Percolator.Domain/Percolator.Domain.csproj" />
   <Project Path="Percolator.Persistence.Tests/Percolator.Persistence.Tests.csproj" />
   <Project Path="Percolator.Persistence/Percolator.Persistence.csproj" />
