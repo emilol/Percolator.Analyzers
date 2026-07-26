@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using SampleCode;
 using Xunit;
 
 using Verifier = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<
@@ -13,22 +14,11 @@ namespace Percolator.Analyzers.Tests
         [Fact]
         public async Task ReturnTask_IsReplacedWithAwaitTask()
         {
+            var includes = Sample.For<IGreeter>();
+
             // Lang=C#
-            const string includes = """
-using System.Threading.Tasks;
+            var text = includes + """
 
-namespace SampleCode;
-
-public interface IGreeter
-{
-    Task Greet();
-    Task Farewell();
-}
-
-
-""";
-            // Lang=C#
-            const string text = includes + """
 public class Greeter : IGreeter
 {
     public Task {|#0:Greet|}() => Task.CompletedTask;
@@ -38,7 +28,8 @@ public class Greeter : IGreeter
 }
 """;
             // Lang=C#
-            const string newText = includes + """
+            var newText = includes + """
+
 public class Greeter : IGreeter
 {
     public async Task Greet() => await Task.CompletedTask;
@@ -56,35 +47,15 @@ public class Greeter : IGreeter
         [Fact]
         public async Task ReturnTaskOf_IsReplacedWithReturnAwaitTaskOf()
         {
+            var includes = Sample.For(typeof(IRepository<>));
+
             // Lang=C#
-            const string includes = """
-using System;
-using System.Threading.Tasks;
+            var text = includes + """
 
-public class Customer
-{
-    public Guid Id { get; }
-    public Customer(Guid id) => Id = id;
-}
-
-public class Order
-{
-    public Guid Id { get; }
-    public Order(Guid id) => Id = id;
-}
-
-public interface IRepository<T>
-{
-    Task<T> Load();
-}
-
-
-""";
-            // Lang=C#
-            const string text = includes + """
 public class CustomerRepository : IRepository<Customer>
 {
     public Task<Customer> {|#0:Load|}() => Task.FromResult(new Customer(Guid.NewGuid()));
+    public async Task Save() => await Task.CompletedTask;
 }
 
 public class OrderRepository : IRepository<Order>
@@ -92,20 +63,26 @@ public class OrderRepository : IRepository<Order>
     public Task<Order> {|#1:Load|}() {
         return Task.FromResult(new Order(Guid.NewGuid()));
     }
+
+    public async Task Save() => await Task.CompletedTask;
 }
 """;
             // Lang=C#
-            const string newText = includes + """
+            var newText = includes + """
+
 public class CustomerRepository : IRepository<Customer>
 {
-    public async Task<Customer> {|#0:Load|}() => await Task.FromResult(new Customer(Guid.NewGuid()));
+    public async Task<Customer> Load() => await Task.FromResult(new Customer(Guid.NewGuid()));
+    public async Task Save() => await Task.CompletedTask;
 }
 
 public class OrderRepository : IRepository<Order>
 {
-    public async Task<Order> {|#1:Load|}() {
+    public async Task<Order> Load() {
         return await Task.FromResult(new Order(Guid.NewGuid()));
     }
+
+    public async Task Save() => await Task.CompletedTask;
 }
 """;
             await Verifier.VerifyCodeFixAsync(text, [

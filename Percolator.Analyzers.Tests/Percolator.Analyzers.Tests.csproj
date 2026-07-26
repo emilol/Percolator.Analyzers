@@ -23,4 +23,10 @@
         <ProjectReference Include="..\Percolator.Analyzers.CodeFixes\Percolator.Analyzers.CodeFixes.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="SampleBoilerplate\**\*.cs">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>
