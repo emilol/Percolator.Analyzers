@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Xunit;
-using Verifier = Microsoft.CodeAnalysis.CSharp.Testing.XUnit.AnalyzerVerifier<Percolator.Analyzers.AsyncAnalyzer>;
+using Verifier = Microsoft.CodeAnalysis.CSharp.Testing.CSharpAnalyzerVerifier<Percolator.Analyzers.AsyncAnalyzer, Microsoft.CodeAnalysis.Testing.DefaultVerifier>;
 
 namespace Percolator.Analyzers.Tests;
 

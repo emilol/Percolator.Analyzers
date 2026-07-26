@@ -1,9 +1,10 @@
 using System.Threading.Tasks;
 using Xunit;
 
-using Verifier =
-    Microsoft.CodeAnalysis.CSharp.Testing.XUnit.CodeFixVerifier<Percolator.Analyzers.AsyncAnalyzer,
-        Percolator.Analyzers.AsyncCodeFixProvider>;
+using Verifier = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<
+    Percolator.Analyzers.AsyncAnalyzer,
+    Percolator.Analyzers.AsyncCodeFixProvider,
+    Microsoft.CodeAnalysis.Testing.DefaultVerifier>;
 
 namespace Percolator.Analyzers.Tests
 {
